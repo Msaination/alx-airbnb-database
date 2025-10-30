@@ -12,3 +12,16 @@ CREATE INDEX idx_bookings_booking_date ON bookings(booking_date);
 CREATE INDEX idx_properties_property_id ON properties(property_id);
 CREATE INDEX idx_properties_location ON properties(location);
 CREATE INDEX idx_properties_name ON properties(name);
+
+EXPLAIN ANALYZE
+SELECT 
+    p.name, COUNT(*) AS total_bookings
+FROM 
+    bookings b
+JOIN 
+    properties p ON b.property_id = p.property_id
+WHERE 
+    b.booking_date >= '2025-01-01'
+GROUP BY 
+    p.name;
+
