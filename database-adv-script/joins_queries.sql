@@ -10,3 +10,15 @@ FROM
 INNER JOIN 
     users ON bookings.user_id = users.user_id;
 
+SELECT 
+    properties.property_id,
+    properties.name AS property_name,
+    reviews.review_id,
+    reviews.rating,
+    reviews.comment
+FROM 
+    properties
+LEFT JOIN 
+    reviews ON properties.property_id = reviews.property_id;
+
+
