@@ -1,5 +1,5 @@
 ```sql
-CREATE TABLE User (
+CREATE TABLE user (
     user_id UUID PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE User (
     INDEX idx_email (email)
 );
 
-CREATE TABLE Property (
+CREATE TABLE property (
     property_id UUID PRIMARY KEY,
     host_id UUID NOT NULL,
     name VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE Property (
     INDEX idx_host_id (host_id)
 );
 
-CREATE TABLE Booking (
+CREATE TABLE booking (
     booking_id UUID PRIMARY KEY,
     property_id UUID NOT NULL,
     user_id UUID NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE Booking (
     INDEX idx_user_id (user_id)
 );
 
-CREATE TABLE Payment (
+CREATE TABLE payment (
     payment_id UUID PRIMARY KEY,
     booking_id UUID NOT NULL,
     amount DECIMAL(10, 2) NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE Payment (
     INDEX idx_booking_id (booking_id)
 );
 
-CREATE TABLE Review (
+CREATE TABLE review (
     review_id UUID PRIMARY KEY,
     property_id UUID NOT NULL,
     user_id UUID NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE Review (
     INDEX idx_user_id (user_id)
 );
 
-CREATE TABLE Message (
+CREATE TABLE message (
     message_id UUID PRIMARY KEY,
     sender_id UUID NOT NULL,
     recipient_id UUID NOT NULL,
