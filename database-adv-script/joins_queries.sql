@@ -31,6 +31,11 @@ FROM
     users
 FULL OUTER JOIN 
     bookings ON users.user_id = bookings.user_id;
+ORDER BY 
+    users.user_id;
+
+
+
 
 
 
