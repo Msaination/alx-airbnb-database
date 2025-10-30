@@ -1,4 +1,4 @@
--- Retrieve all bookings with user, property, and payment details
+-- Retrieve filtered bookings with user, property, and payment details
 SELECT 
     b.booking_id,
     b.booking_date,
@@ -19,7 +19,10 @@ JOIN
 JOIN 
     properties p ON b.property_id = p.property_id
 JOIN 
-    payments pay ON b.payment_id = pay.payment_id;
+    payments pay ON b.payment_id = pay.payment_id
+WHERE 
+    b.booking_date >= '2025-01-01'
+    AND pay.status = 'Completed';
 
 EXPLAIN ANALYZE
 SELECT 
@@ -42,7 +45,13 @@ JOIN
 JOIN 
     properties p ON b.property_id = p.property_id
 JOIN 
-    payments pay ON b.payment_id = pay.payment_id;
+    payments pay ON b.payment_id = pay.payment_id
+WHERE 
+    b.booking_date >= '2025-01-01'
+    AND pay.status = 'Completed';
+
+
+
 -- Indexes to speed up joins
 CREATE INDEX idx_bookings_user_id ON bookings(user_id);
 CREATE INDEX idx_bookings_property_id ON bookings(property_id);
